@@ -54,13 +54,13 @@ public class ShotBow extends ItemBow {
             }
 
             //EntityArrow entityarrow = new EntityArrow(p_77615_2_, p_77615_3_, f * 40.0F);
-            EntityArrow[] eas=new EntityArrow[9];
+            EntityArrow[] eas=new EntityArrow[25];
             for(int a=0;a<eas.length;a++){
             	
             		eas[a]=new EntityArrow(p_77615_2_, p_77615_3_, f * 40.0F);
-            		eas[a].posZ+=3.0*(Math.random()-0.5f);
-            		eas[a].posX+=3.0*(Math.random()-0.5f);
-            		eas[a].posY+=3.0*(Math.random()-0.5f);
+            		eas[a].posZ+=5.0*(Math.random()-0.5f);
+            		eas[a].posX+=5.0*(Math.random()-0.5f);
+            		eas[a].posY+=5.0*(Math.random()-0.5f);
             	
             }
             

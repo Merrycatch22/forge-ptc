@@ -32,21 +32,24 @@ public class CrudArmor extends ItemArmor {
 			}
 		}
 		if (itemStack.getItem() == ModArmor.crudPlate) {
-			world.spawnEntityInWorld(new EntityTNTPrimed(world, player.posX
-					+ 10.0 * Math.random() - 5.0, player.posY + 5 + 5.0
-					* Math.random(), player.posZ + 10.0 * Math.random() - 5.0,
-					player));
+			EntityArrow arrow=new EntityArrow(world, player, 5F);
+			arrow.posZ+=1.0*(Math.random()-0.5f);
+    		arrow.posX+=1.0*(Math.random()-0.5f);
+    		arrow.posY+=1.0*(Math.random()-0.5f);
+			world.spawnEntityInWorld(arrow);
 		}
 		if (itemStack.getItem() == ModArmor.crudLegs) {
 			EntityOcelot oc = new EntityOcelot(world);
 			oc.setPosition(player.posX + 10.0 * Math.random() - 5.0,
 					player.posY + 30 + 30.0 * Math.random(), player.posZ + 10.0
 							* Math.random() - 5.0);
+			oc.setTamed(true);
 			world.spawnEntityInWorld(oc);
 			EntityWolf w = new EntityWolf(world);
 			w.setPosition(player.posX + 10.0 * Math.random() - 5.0, player.posY
 					+ 30 + 30.0 * Math.random(),
 					player.posZ + 10.0 * Math.random() - 5.0);
+			w.setTamed(true);
 			world.spawnEntityInWorld(w);
 		}
 		if (itemStack.getItem() == ModArmor.crudBoots) {
