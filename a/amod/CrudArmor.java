@@ -30,6 +30,7 @@ public class CrudArmor extends ItemArmor {
 			if (!world.isRemote) {
 				world.spawnEntityInWorld(arrow);
 			}
+			
 		}
 		if (itemStack.getItem() == ModArmor.crudPlate) {
 			EntityArrow arrow=new EntityArrow(world, player, 5F);
