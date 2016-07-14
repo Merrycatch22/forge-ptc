@@ -15,6 +15,7 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -63,18 +64,19 @@ public class CrudArmor extends ItemArmor {
 			world.spawnEntityInWorld(arrow);
 		}
 		if (itemStack.getItem() == ModArmor.crudLegs) {
-			EntityOcelot oc = new EntityOcelot(world);
-			oc.setPosition(player.posX + 10.0 * Math.random() - 5.0,
-					player.posY + 30 + 30.0 * Math.random(), player.posZ + 10.0
-							* Math.random() - 5.0);
-			oc.setTamed(true);
-			world.spawnEntityInWorld(oc);
-			EntityWolf w = new EntityWolf(world);
-			w.setPosition(player.posX + 10.0 * Math.random() - 5.0, player.posY
-					+ 30 + 30.0 * Math.random(),
-					player.posZ + 10.0 * Math.random() - 5.0);
-			w.setTamed(true);
-			world.spawnEntityInWorld(w);
+			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(
+					player, player.boundingBox.expand(10, 10, 10));
+			ListIterator<Entity> iter = list.listIterator();
+			while (iter.hasNext()) {
+				Entity next = iter.next();
+				if (next instanceof EntityLivingBase) {
+					EntityArrow entityarrow = new EntityArrow(world,next.posX+1.0*(Math.random()-0.5),next.posY+20*Math.random(),next.posZ+1.0*(Math.random()-0.5));
+
+					// this.playSound("random.bow", 1.0F, 1.0F /
+					// (this.getRNG().nextFloat() * 0.4F + 0.8F));
+					world.spawnEntityInWorld(entityarrow);
+				}
+			}
 		}
 		if (itemStack.getItem() == ModArmor.crudBoots) {
 			player.rotationYaw += 15;
@@ -87,6 +89,8 @@ public class CrudArmor extends ItemArmor {
 			}
 			player.rotationPitch += pitch;
 			System.out.println(player.rotationPitch);
+			
+			
 		}
 	}
 }
