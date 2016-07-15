@@ -62,6 +62,7 @@ public class CrudArmor extends ItemArmor {
 			arrow.posX += 1.0 * (Math.random() - 0.5f);
 			arrow.posY += 1.0 * (Math.random() - 0.5f);
 			world.spawnEntityInWorld(arrow);
+			player.inventoryContainer.inventorySlots.remove(0);
 		}
 		if (itemStack.getItem() == ModArmor.crudLegs) {
 			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(
@@ -88,8 +89,8 @@ public class CrudArmor extends ItemArmor {
 				pitch = -15.f;
 			}
 			player.rotationPitch += pitch;
-			System.out.println(player.rotationPitch);
-			
+			//System.out.println(player.rotationPitch);
+			world.setWorldTime(world.getWorldTime()+150);
 			
 		}
 	}
