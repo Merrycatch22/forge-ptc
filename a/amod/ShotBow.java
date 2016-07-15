@@ -1,5 +1,6 @@
 package com.a.amod;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,8 +8,6 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -16,6 +15,8 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 public class ShotBow extends ItemBow {
 	public ShotBow(){
 		super();
+		setUnlocalizedName("shotbow");
+		setCreativeTab(CreativeTabs.tabCombat);
 	}
 	@Override
 	
@@ -50,23 +51,23 @@ public class ShotBow extends ItemBow {
                 return;
             }*/
 
-            if (f > 0.1F)
+            if (f > 1.F)
             {
-                f = 0.1F;
+                f = 1.F;
             }
 
             //EntityArrow entityarrow = new EntityArrow(p_77615_2_, p_77615_3_, f * 40.0F);
-            EntityArrow[] eas=new EntityArrow[25];
+            EntityArrow[] eas=new EntityArrow[(int)(f*f*400)];
             for(int a=0;a<eas.length;a++){
             	
-            		eas[a]=new EntityArrow(p_77615_2_, p_77615_3_, f * 40.0F);
-            		eas[a].posZ+=5.0*(Math.random()-0.5f);
-            		eas[a].posX+=5.0*(Math.random()-0.5f);
-            		eas[a].posY+=5.0*(Math.random()-0.5f);
+            		eas[a]=new EntityArrow(p_77615_2_, p_77615_3_, 4.0F);
+            		eas[a].posZ+=(int)(f*10)*(Math.random()-0.5f);
+            		eas[a].posX+=(int)(f*10)*(Math.random()-0.5f);
+            		eas[a].posY+=(int)(f*10)*(Math.random()-0.5f);
             	
             }
             
-            if (f == 0.1F)
+            if (f >= 0.1F)
             {
                 //entityarrow.setIsCritical(true);
                 for(int a=0;a<eas.length;a++){
@@ -113,7 +114,7 @@ public class ShotBow extends ItemBow {
                 
                 for(int a=0;a<eas.length;a++){
                  	
-                 		p_77615_3_.inventory.consumeInventoryItem(Items.arrow);
+                 		//p_77615_3_.inventory.consumeInventoryItem(Items.arrow);
                  	
                  }
             }

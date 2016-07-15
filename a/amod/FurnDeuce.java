@@ -20,7 +20,7 @@ public class FurnDeuce extends BlockFurnace{
 	public FurnDeuce(boolean p_i45407_1_) {
 		super(p_i45407_1_);
 		setBlockName("furnDeuce");
-		setCreativeTab(CreativeTabs.tabFood);
+		setCreativeTab(CreativeTabs.tabDecorations);
 		
 		// TODO Auto-generated constructor stub
 	}

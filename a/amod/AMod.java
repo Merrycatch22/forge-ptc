@@ -1,5 +1,6 @@
 package com.a.amod;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -18,6 +19,8 @@ public class AMod
     	ModItems.items();
     	ModArmor.armor();
     	ModEntities.entities(this);
+    	Handler handler= new Handler();
+    	FMLCommonHandler.instance().bus().register(handler);
 		// some example code
        // System.out.println("DIRT BLOCK >> "+Blocks.dirt.getUnlocalizedName());
     }

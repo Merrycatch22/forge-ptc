@@ -34,7 +34,7 @@ public class EntityHoming extends EntitySnowball{
 	public void onUpdate(){
 		
 		List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
-				this.getThrower(), this.boundingBox.expand(10, 10, 10));
+				this.getThrower(), this.boundingBox.expand(20, 20, 20));
 		List<Entity> listLiving = new ArrayList<Entity>();
 		ListIterator<Entity> iter = list.listIterator();
 		
@@ -52,13 +52,22 @@ public class EntityHoming extends EntitySnowball{
 		if(!listLiving.isEmpty()){
 			closest=listLiving.get(0);
 			double d0 = closest.posX - this.posX;
-			//double d1 = next.posY + (double) next.getEyeHeight()- 1.100000023841858D - entitysnowball.posY;
-			double d1=closest.posY-this.posY;
+			double d1 = closest.posY-this.posY;
 			double d2 = closest.posZ - this.posZ;
-			//float f1 = MathHelper.sqrt_double(d0 * d0 + d2 * d2) * 0.2F;
-			float f1=0.f;
-			this.setThrowableHeading(d0, d1 + (double) f1,
-					d2, 0.6F, 0.0F);
+			double mag=Math.sqrt(d0*d0+d1*d1+d2*d2);
+			double dividePower=5;
+			d0/=mag*dividePower;
+			d1/=mag*dividePower;
+			d2/=mag*dividePower;
+			double prev0=this.motionX;
+			double prev1=this.motionY;
+			double prev2=this.motionZ;
+			double prevMag=Math.sqrt(prev0*prev0+prev1*prev1+prev2*prev2);
+			prev0/=prevMag;
+			prev1/=prevMag;
+			prev2/=prevMag;
+			this.setThrowableHeading(d0+prev0, d1+prev1,
+					d2+prev2, 0.6F, 0.0F);
 		}
 		super.onUpdate();
 		

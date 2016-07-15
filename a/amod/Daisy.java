@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 public class Daisy extends BlockTNT{
 	public Daisy(){
 		super();
+		setBlockName("DaisyTNT");
 	}
 	@Override
 	public void func_150114_a(World p_150114_1_, int p_150114_2_, int p_150114_3_, int p_150114_4_, int p_150114_5_, EntityLivingBase p_150114_6_)

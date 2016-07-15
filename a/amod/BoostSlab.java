@@ -9,7 +9,8 @@ public class BoostSlab extends BlockSlab {
 	public BoostSlab(boolean p_i45410_1_, Material p_i45410_2_) {
 		super(p_i45410_1_, p_i45410_2_);
 		this.slipperiness=2.f;
-		setCreativeTab(CreativeTabs.tabFood);
+		super.setBlockName("BoostSlab");
+		setCreativeTab(CreativeTabs.tabBlock);
 		// TODO Auto-generated constructor stub
 	}
 
