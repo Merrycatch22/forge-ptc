@@ -15,5 +15,6 @@ public class BlockMyStone extends Block{
 		setResistance(5f);
 		setHarvestLevel("pickaxe",0);
 		setStepSound(soundTypeStone);
+		this.slipperiness=2.f;
 	}
 }
